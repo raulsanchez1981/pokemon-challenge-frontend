@@ -16,7 +16,7 @@ const httpOptions = {
 @Injectable()
 export class PokemonService {
 
-  private pokemonUrl = 'https://pokemon-challenge.pokemonkuapp.com/challenge/';  // URL to web api
+  private pokemonUrl = 'https://pokemon-challenge.herokuapp.com/challenge/pokemon';  // URL to web api
 
   constructor(
     private http: HttpClient,

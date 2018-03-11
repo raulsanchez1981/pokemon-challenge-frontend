@@ -1,29 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
-import { Subject }    from 'rxjs/Subject';
-import {
-  debounceTime, distinctUntilChanged, switchMap
-} from 'rxjs/operators';
-
-
-
-@Component({
-  selector: 'app-pokemon-search',
-  templateUrl: './pokemon-search.component.html',
-  styleUrls: ['./pokemon-search.component.css']
-})
-export class PokemonSearchComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit() {
-  }
-
-}
-
-
-
-import { Component, OnInit } from '@angular/core';
 
 import { Observable } from 'rxjs/Observable';
 import { Subject }    from 'rxjs/Subject';
@@ -33,35 +8,38 @@ import {
   debounceTime, distinctUntilChanged, switchMap
 } from 'rxjs/operators';
 
-import { Hero } from '../hero';
-import { HeroService } from '../hero.service';
+import { Pokemon } from '../pokemon';
+import { PokemonService } from '../pokemon.service';
+import {PokemonFilter} from '../pokemon-filter';
 
 @Component({
-  selector: 'app-hero-search',
-  templateUrl: './hero-search.component.html',
-  styleUrls: [ './hero-search.component.css' ]
+  selector: 'app-pokemon-search',
+  templateUrl: './pokemon-search.component.html',
+  styleUrls: [ './pokemon-search.component.css' ]
 })
-export class HeroSearchComponent implements OnInit {
-  heroes$: Observable<Hero[]>;
-  private searchTerms = new Subject<string>();
+export class PokemonSearchComponent implements OnInit {
+  pokemons: Pokemon[];
+  favourite: boolean;
 
-  constructor(private heroService: HeroService) {}
+  constructor(private pokemonService: PokemonService) {}
 
   // Push a search term into the observable stream.
   search(term: string): void {
-    this.searchTerms.next(term);
+    var pok = new PokemonFilter();
+    pok.name = term;
+    if (this.favourite) {
+      pok.favourite = this.favourite;
+    }
+    this.getPokemons(pok);
   }
 
   ngOnInit(): void {
-    this.heroes$ = this.searchTerms.pipe(
-      // wait 300ms after each keystroke before considering the term
-      debounceTime(300),
-
-      // ignore new term if same as previous term
-      distinctUntilChanged(),
-
-      // switch to new search observable each time the term changes
-      switchMap((term: string) => this.heroService.searchHeroes(term)),
-    );
+    this.getPokemons(new PokemonFilter());
   }
+
+  getPokemons(pokemonFilter: PokemonFilter): void {
+    this.pokemonService.getPokemons(pokemonFilter)
+      .subscribe(pokemons => this.pokemons = pokemons);
+  }
+
 }

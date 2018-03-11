@@ -1,7 +1,11 @@
-<h2>{{ pokemon.name }} Details</h2>
-<div><span>id: </span>{{ pokemon.id }}</div>
-<div>
-  <label>name:
-    <input [(ngModel)]="pokemon.name" placeholder="name">
-  </label>
-</div>
+<h2>My Heroes</h2>
+
+
+<ul class="heroes">
+  <li *ngFor="let pokemon of pokemons">
+      <span class="badge">{{pokemon.id}}</span> {{pokemon.name}}
+    <!--<a routerLink="/detail/{{pokemon.id}}"></a>-->
+    <button class="delete" title="delete hero"
+            (click)="delete(pokemon)">x</button>
+  </li>
+</ul>

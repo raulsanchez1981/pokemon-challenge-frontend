@@ -1,3 +1,30 @@
-<p>
-  pokemon-search works!
-</p>
+  <h4>Pokemon Search</h4>
+
+  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
+  <label style="color: black"> Favoritos
+    <input type="checkbox" name="favourite" [(ngModel)]="favourite" (change)="search(searchBox.value)">
+  </label>
+
+
+
+  <!--<div>-->
+    <!--<li *ngFor="let pokemon of pokemons$ | async" >-->
+      <!--<div>-->
+        <!--<img src="{{pokemon.image}}" alt={{pokemon.name}} height="250" width="250">-->
+      <!--</div>-->
+    <!--</li>-->
+  <!--</div>-->
+
+  <div class="grid grid-pad">
+    <a *ngFor="let pokemon of pokemons" class="col-1-4">
+        <img src="{{pokemon.image}}" alt={{pokemon.name}} height="200" width="200" style="border-radius: 20%;" >
+    </a>
+  </div>
+
+  <!--<ul class="search-result">-->
+    <!--<li *ngFor="let pokemon of pokemons$ | async" >-->
+      <!--<a routerLink="/detail/{{pokemon.id}}">-->
+        <!--{{pokemon.name}}-->
+      <!--</a>-->
+    <!--</li>-->
+  <!--</ul>-->
