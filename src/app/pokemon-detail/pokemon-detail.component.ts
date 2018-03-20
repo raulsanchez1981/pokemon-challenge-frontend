@@ -23,8 +23,12 @@ export class PokemonDetailComponent implements OnInit {
 
   getPokemon(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.pokemonService.getPokemon(id)
-      .subscribe(pokemon => this.pokemon = pokemon);
+    if (null != id) {
+      this.pokemonService.getPokemon(id).subscribe(pokemon => this.pokemon = pokemon);
+    } else {
+      this.pokemon = new Pokemon();
+    }
+
   }
 
   goBack(): void {
@@ -32,8 +36,17 @@ export class PokemonDetailComponent implements OnInit {
   }
 
   save(): void {
-    this.pokemonService.updatePokemon(this.pokemon)
-      .subscribe(() => this.goBack());
+    if (null != this.pokemon.id) {
+      this.pokemonService.updatePokemon(this.pokemon).subscribe(() => this.goBack());
+    } else {
+      this.pokemon.types = ["Siniestro", "Bicho"];
+      this.pokemonService.addPokemon(this.pokemon).subscribe(() => this.goBack());
+    }
+
+  }
+
+  delete(): void {
+    this.pokemonService.deletePokemon(this.pokemon).subscribe(() => this.goBack());
   }
 }
 

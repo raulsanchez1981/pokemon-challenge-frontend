@@ -22,8 +22,11 @@
       <input [(ngModel)]="pokemon.favourite" placeholder="favourite"/>
     </label>
   </div>
-
+</div>
+<div>
   <button (click)="goBack()">go back</button>
   <button (click)="save()">save</button>
-
+  <button *ngIf="pokemon.id" (click)="delete()">delete</button>
 </div>
+
+

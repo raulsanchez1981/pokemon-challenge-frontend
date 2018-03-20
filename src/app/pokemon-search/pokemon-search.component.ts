@@ -42,4 +42,5 @@ export class PokemonSearchComponent implements OnInit {
       .subscribe(pokemons => this.pokemons = pokemons);
   }
 
+
 }

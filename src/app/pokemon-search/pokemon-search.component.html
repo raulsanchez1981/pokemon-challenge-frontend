@@ -4,6 +4,10 @@
   <label style="color: black"> Favoritos
     <input type="checkbox" name="favourite" [(ngModel)]="favourite" (change)="search(searchBox.value)">
   </label>
+  <a routerLink="/detail">
+    <img src="http://www.iconarchive.com/download/i80210/custom-icon-design/flatastic-1/add.ico" height="20" width="20" style="border-radius: 20%; background-color: #888888" >
+  </a>
+
   <br><br><br>
   <div class="grid grid-pad">
     <a *ngFor="let pokemon of pokemons" class="col-1-4">
