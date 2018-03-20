@@ -9,13 +9,15 @@ import { PokemonService} from './pokemon.service';
 import { MessageService} from './message.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule} from '@angular/common/http';
+import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     PokemonSearchComponent,
-    PokemonComponent
+    PokemonComponent,
+    PokemonDetailComponent
   ],
   imports: [
     BrowserModule,

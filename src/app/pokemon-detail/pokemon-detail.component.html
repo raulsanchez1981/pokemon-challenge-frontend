@@ -1,0 +1,29 @@
+<div *ngIf="pokemon">
+
+  <img src="{{pokemon.image}}" title={{pokemon.name}} height="200" width="200" style="border-radius: 20%; background-color: #888888" >
+  <h2>{{ pokemon.name | uppercase }} Details</h2>
+  <div>
+    <label>name:
+      <input [(ngModel)]="pokemon.name" placeholder="name"/>
+    </label>
+  </div>
+  <div>
+    <label>description:
+      <input [(ngModel)]="pokemon.description" placeholder="description"/>
+    </label>
+  </div>
+  <div>
+    <label>image:
+      <input [(ngModel)]="pokemon.image" placeholder="image"/>
+    </label>
+  </div>
+  <div>
+    <label>favourite:
+      <input [(ngModel)]="pokemon.favourite" placeholder="favourite"/>
+    </label>
+  </div>
+
+  <button (click)="goBack()">go back</button>
+  <button (click)="save()">save</button>
+
+</div>
