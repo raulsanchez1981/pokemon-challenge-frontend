@@ -1,22 +1,49 @@
-  <h4 style="color: black;">Pokemon Search</h4>
 
-  <input #searchBox id="search-box" (keyup)="search(searchBox.value)" />
-  <label style="color: black"> Favoritos
-    <input type="checkbox" name="favourite" [(ngModel)]="favourite" (change)="search(searchBox.value)">
-  </label>
-  <a routerLink="/detail">
-    <img src="http://www.iconarchive.com/download/i80210/custom-icon-design/flatastic-1/add.ico" height="20" width="20" style="border-radius: 20%; background-color: #888888" >
-  </a>
+  <div class="container" >
+    <div class="row">
+      <div class="col-md-10">
+        <div class="row">
+          <strong><h4 style="color: black;">Pokemon Search</h4></strong>
+        </div>
 
-  <br><br><br>
-  <div class="grid grid-pad">
-<div class="row">
-  <div *ngFor="let pokemon of pokemons" class="col-md-auto" style="margin-top: 15px;">
-    <a routerLink="/detail/{{pokemon.id}}">
-      <img src="{{pokemon.image}}" title={{pokemon.name}} height="200" width="200"
-           class="background-image {{(pokemon.favourite)? 'boder-image' : ''}}"  >
-    </a>
+        <div class="row form-group" style="margin-top: 10px;">
+          <div class="col-md-6">
+            <div class="form-group row">
+              <label class="col-form-label">Name: </label>
+              <div class="col-sm-10">
+                <input #searchBox id="search-box" (keyup)="search(searchBox.value)" type="text" class="form-control" placeholder="Search by name...">
+              </div>
+            </div>
+
+          </div>
+          <div class="col-md-2">
+            <input type="checkbox" name="favourite" [(ngModel)]="favourite" (change)="search(searchBox.value)" class="form-check-input">
+            <label class="form-check-label">Favourite</label>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="col-md-2">
+        <a routerLink="/detail">
+          <img src="../../assets/img/green-add-png-image-66564.png" height="50" width="50" title="Add New Pokemon"
+               style="margin-top: 25px;">
+        </a>
+      </div>
+
+    </div>
+
   </div>
-</div>
+
+
+  <div class="container grid grid-pad" style="margin-top: 20px;"  >
+    <div class="row">
+      <div *ngFor="let pokemon of pokemons" class="col-md-auto" style="margin-top: 15px;">
+        <a routerLink="/detail/{{pokemon.id}}">
+          <img src="{{pokemon.image}}" title={{pokemon.name}} height="180" width="180"
+               class="background-image {{(pokemon.favourite)? 'boder-image' : ''}}"  >
+        </a>
+      </div>
+    </div>
   </div>
 

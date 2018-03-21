@@ -31,6 +31,7 @@ export class PokemonDetailComponent implements OnInit {
               private location: Location) {}
 
   ngOnInit() {
+      this.pokemon = new Pokemon();
       this.getAllPokemons();
       this.getPokemon();
       this.getTypes();
