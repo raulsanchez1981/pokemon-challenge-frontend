@@ -45,10 +45,7 @@ export class PokemonService {
 
   /** POST: add a new pokemon to the server */
   addPokemon (pokemon: Pokemon): Observable<Pokemon> {
-    return this.http.post<Pokemon>(this.pokemonUrl, pokemon, httpOptions).pipe(
-      tap((pokemon: Pokemon) => this.log(`added pokemon w/ name=${pokemon.name}`)),
-      catchError(this.handleError<Pokemon>('addPokemon'))
-    );
+    return this.http.post<Pokemon>(this.pokemonUrl, pokemon, httpOptions);
   }
 
   /** DELETE: delete the pokemon from the server */

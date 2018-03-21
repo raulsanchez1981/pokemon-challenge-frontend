@@ -88,7 +88,16 @@ export class PokemonDetailComponent implements OnInit {
         },
         () => this.goBack());
     } else {
-      this.pokemonService.addPokemon(this.pokemon).subscribe(() => this.goBack());
+      this.pokemonService.addPokemon(this.pokemon).subscribe(
+        result => {
+          console.log(result)
+        },
+        error => {
+          this.alertOrigin.msg = error.error.message;
+          this.alert = this.alertOrigin;
+
+        },
+        () => this.goBack());
     }
 
   }
