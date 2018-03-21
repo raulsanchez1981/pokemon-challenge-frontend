@@ -38,3 +38,12 @@ ul.search-result {
   padding-left: 0;
 }
 
+.background-image {
+  border-radius: 20%; background-color: #888888;
+
+}
+
+.boder-image {
+  border: 5px solid yellow;
+}
+

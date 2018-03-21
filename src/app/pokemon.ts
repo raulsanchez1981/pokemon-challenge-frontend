@@ -3,7 +3,7 @@ export class Pokemon {
   name: string;
   description: string;
   types: string[];
-  image: string;
+  image: string = 'http://';
   favourite: boolean;
   evolution: string;
 

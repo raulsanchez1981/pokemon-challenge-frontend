@@ -10,10 +10,13 @@
 
   <br><br><br>
   <div class="grid grid-pad">
-    <a *ngFor="let pokemon of pokemons" class="col-1-4">
-      <a routerLink="/detail/{{pokemon.id}}">
-        <img src="{{pokemon.image}}" title={{pokemon.name}} height="200" width="200" style="border-radius: 20%; background-color: #888888" >
-      </a>
+<div class="row">
+  <div *ngFor="let pokemon of pokemons" class="col-md-auto" style="margin-top: 15px;">
+    <a routerLink="/detail/{{pokemon.id}}">
+      <img src="{{pokemon.image}}" title={{pokemon.name}} height="200" width="200"
+           class="background-image {{(pokemon.favourite)? 'boder-image' : ''}}"  >
     </a>
+  </div>
+</div>
   </div>
 
