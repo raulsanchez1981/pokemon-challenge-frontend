@@ -25,6 +25,7 @@
           <div class="form-group">
             <label>Evolution:</label>
             <select [(ngModel)]="pokemon.evolution" class="form-control selcls" >
+              <option selected [ngValue]=""></option>
               <option *ngFor="let pok of listPokemons" [ngValue]="pok.name">
                 {{pok.name}}
               </option>
