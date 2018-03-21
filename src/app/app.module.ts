@@ -12,6 +12,7 @@ import { HttpClientModule} from '@angular/common/http';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
 import {MultiselectDropdownModule} from "./dropdown-multiselect/src/dropdown/dropdown.module";
 import {TypeService} from "./type.service";
+import {AlertModule, ModalModule} from "ngx-bootstrap";
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import {TypeService} from "./type.service";
     FormsModule,
     AppRoutingModule,
     HttpClientModule,
-    MultiselectDropdownModule
+    MultiselectDropdownModule,
+    AlertModule.forRoot()
   ],
   providers: [PokemonService, MessageService, TypeService],
   bootstrap: [AppComponent]

@@ -19,7 +19,8 @@
   </div>
   <div>
     <label>favourite:
-      <input [(ngModel)]="pokemon.favourite" placeholder="favourite"/>
+      <!--<input [(ngModel)]="pokemon.favourite" placeholder="favourite"/>-->
+      <input type="checkbox" name="favourite" [(ngModel)]="pokemon.favourite" >
     </label>
   </div>
   <div>
@@ -27,6 +28,22 @@
        <ss-multiselect-dropdown [options]="myOptions" [(ngModel)]="optionsModel"></ss-multiselect-dropdown>
     </label>
   </div>
+
+  <div>
+    <label>Evolution:
+      <select [(ngModel)]="pokemon.evolution">
+        <option *ngFor="let pok of listPokemons" [ngValue]="pok.name">
+          {{pok.name}}
+        </option>
+      </select>
+    </label>
+  </div>
+
+  <div *ngIf="alert">
+    <alert [type]="alert.type" >{{ alert.msg }}</alert>
+  </div>
+
+
 
 </div>
 <div>

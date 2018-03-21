@@ -64,10 +64,7 @@ export class PokemonService {
 
   /** PUT: update the pokemon on the server */
   updatePokemon (pokemon: Pokemon): Observable<any> {
-    return this.http.put(this.pokemonUrl, pokemon, httpOptions).pipe(
-      tap(_ => this.log(`updated pokemon id=${pokemon.id}`)),
-      catchError(this.handleError<any>('updatePokemon'))
-    );
+    return this.http.put(this.pokemonUrl, pokemon, httpOptions);
   }
 
 

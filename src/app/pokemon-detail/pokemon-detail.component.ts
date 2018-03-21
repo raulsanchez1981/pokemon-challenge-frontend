@@ -5,7 +5,7 @@ import {PokemonService} from '../pokemon.service';
 import { Location } from '@angular/common';
 import {IMultiSelectOption} from '../dropdown-multiselect/src/dropdown/types';
 import {TypeService} from "../type.service";
-import {forEach} from "@angular/router/src/utils/collection";
+import {PokemonFilter} from "../pokemon-filter";
 
 @Component({
   selector: 'app-pokemon-detail',
@@ -17,7 +17,12 @@ export class PokemonDetailComponent implements OnInit {
   @Input() pokemon: Pokemon;
   optionsModel: string[];
   myOptions: IMultiSelectOption[];
-  listTypes: string[];
+  listPokemons: Pokemon[];
+  alertOrigin: any = {
+    type: 'danger',
+    msg: ''
+  };
+  alert: any;
 
 
   constructor(private route: ActivatedRoute,
@@ -26,16 +31,10 @@ export class PokemonDetailComponent implements OnInit {
               private location: Location) {}
 
   ngOnInit() {
+      this.getAllPokemons();
       this.getPokemon();
       this.getTypes();
 
-      console.log(this.myOptions);
-/*
-      this.myOptions = [
-        {id: "Bicho", name: "Bicho"},
-        {id: "Dragon", name: "Dragon"}
-      ];
-*/
   }
 
   getPokemon(): void {
@@ -49,15 +48,15 @@ export class PokemonDetailComponent implements OnInit {
       this.pokemon = new Pokemon();
     }
 
+  }
 
+  getAllPokemons(): void {
+    this.pokemonService.getPokemons(new PokemonFilter()).subscribe(pokemons => this.listPokemons = pokemons);
   }
 
   getTypes(): void {
     this.typeService.getTypes().subscribe(types => {
-      this.listTypes = types;
-      console.log(types);
       this.convertValues(types);
-
     });
 
   }
@@ -78,9 +77,17 @@ export class PokemonDetailComponent implements OnInit {
   save(): void {
     this.pokemon.types = this.optionsModel;
     if (null != this.pokemon.id) {
-      this.pokemonService.updatePokemon(this.pokemon).subscribe(() => this.goBack());
+      this.pokemonService.updatePokemon(this.pokemon).subscribe(
+        result => {
+          console.log(result)
+        },
+        error => {
+          this.alertOrigin.msg = error.error.message;
+          this.alert = this.alertOrigin;
+
+        },
+        () => this.goBack());
     } else {
-      this.pokemon.types = ["Siniestro", "Bicho"];
       this.pokemonService.addPokemon(this.pokemon).subscribe(() => this.goBack());
     }
 
