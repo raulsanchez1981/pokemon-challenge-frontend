@@ -1,9 +1,11 @@
 <div *ngIf="pokemon">
 
 
-  <h2>{{ pokemon.name | uppercase }} Details</h2>
+  <h2 style="margin-left: 5%; margin-top: 20px;">Details of {{ pokemon.name | titlecase }} </h2>
+  <div *ngIf="alert">
+    <alert [type]="alert.type" >{{ alert.msg }}</alert>
+  </div>
   <div class="contact-section">
-
     <div class="container">
       <div class="row">
         <div class="col-md-6">
@@ -47,14 +49,12 @@
 
       </div>
   </div>
-  <div *ngIf="alert">
-    <alert [type]="alert.type" >{{ alert.msg }}</alert>
-  </div>
+
 
 
 
 </div>
-<div>
+<div align="center">
   <button (click)="goBack()" class="btn btn-info">Go Back</button>
   <button (click)="save()" class="btn btn-success">Save Pokemon</button>
   <button *ngIf="pokemon.id" (click)="delete()" class="btn btn-danger">Delete Pokemon</button>
