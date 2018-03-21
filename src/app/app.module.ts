@@ -10,6 +10,8 @@ import { MessageService} from './message.service';
 import { AppRoutingModule } from './/app-routing.module';
 import { HttpClientModule} from '@angular/common/http';
 import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.component';
+import {MultiselectDropdownModule} from "./dropdown-multiselect/src/dropdown/dropdown.module";
+import {TypeService} from "./type.service";
 
 
 @NgModule({
@@ -23,9 +25,10 @@ import { PokemonDetailComponent } from './pokemon-detail/pokemon-detail.componen
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    MultiselectDropdownModule
   ],
-  providers: [PokemonService, MessageService],
+  providers: [PokemonService, MessageService, TypeService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

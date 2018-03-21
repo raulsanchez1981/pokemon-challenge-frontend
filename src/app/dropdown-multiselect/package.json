@@ -1,0 +1,57 @@
+{
+  "name": "angular-2-dropdown-multiselect",
+  "version": "0.0.0-development",
+  "description": "Customizable dropdown multiselect in Angular 2 with bootstrap css.",
+  "main": "dist/bundles/dropdown.umd.js",
+  "module": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "scripts": {
+    "start": "ng serve",
+    "prebuild": "rimraf dist",
+    "build": "ng-packagr -p src/ng-package.json",
+    "postbuild": "copyfiles README.md LICENSE dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/softsimon/angular-2-dropdown-multiselect.git"
+  },
+  "keywords": [
+    "angular 2",
+    "dropdown",
+    "multi select"
+  ],
+  "author": "Simon Lindh",
+  "contributors": [
+    "Alex Malkevich <malkevich.alex@gmail.com>"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/softsimon/angular-2-dropdown-multiselect/issues"
+  },
+  "homepage": "http://softsimon.github.io/angular-2-dropdown-multiselect",
+  "devDependencies": {
+    "@angular/cli": "^1.7.3",
+    "@angular/common": "^5.2.9",
+    "@angular/compiler": "^5.2.9",
+    "@angular/compiler-cli": "^5.2.9",
+    "@angular/core": "^5.2.9",
+    "@angular/forms": "^5.2.9",
+    "@angular/platform-browser": "^5.2.9",
+    "@angular/platform-server": "^5.2.9",
+    "@angular/animations": "^5.2.9",
+    "@angular/http": "^5.2.9",
+    "@angular/platform-browser-dynamic": "^5.2.9",
+    "@angular/router": "^5.2.9",
+    "@types/core-js": "^0.9.41",
+    "@types/jasmine": "^2.5.47",
+    "copyfiles": "^2.0.0",
+    "ng-packagr": "^2.2.0",
+    "protractor": "^5.3.0",
+    "rimraf": "^2.6.1",
+    "rxjs": "^5.1.0",
+    "tslib": "^1.6.1",
+    "tsickle": "^0.27.2",
+    "typescript": "2.6.2",
+    "zone.js": "^0.8.4"
+  }
+}

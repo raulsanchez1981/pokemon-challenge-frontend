@@ -22,11 +22,18 @@
       <input [(ngModel)]="pokemon.favourite" placeholder="favourite"/>
     </label>
   </div>
+  <div>
+    <label>TYPES:
+       <ss-multiselect-dropdown [options]="myOptions" [(ngModel)]="optionsModel"></ss-multiselect-dropdown>
+    </label>
+  </div>
+
 </div>
 <div>
   <button (click)="goBack()">go back</button>
   <button (click)="save()">save</button>
-  <button *ngIf="pokemon.id" (click)="delete()">delete</button>
+  <!--<button *ngIf="pokemon.id" (click)="delete()">delete</button>-->
 </div>
+
 
 
